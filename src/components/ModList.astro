@@ -1,0 +1,32 @@
+---
+import { search_projects } from './modrinth-api.ts'
+import type { ModrinthMod } from './modrinth-api.ts'
+
+export function hit_to_string(hit: ModrinthMod) {
+    let string = `${hit.title} (${hit.author})`
+    if (hit.desc != null) {
+        string + `: ${hit.desc}`
+    }
+
+    return string
+}
+
+export function hit_image(hit: ModrinthMod): string | null | undefined {
+    let string = (hit.icon != null) ? hit.icon : ""
+    return string.toString()
+}
+
+
+let hits = await search_projects("sodium")
+---
+
+<div id="container">
+    {
+    hits.map((h: any)=>
+    <div>
+        <img src={hit_image(h)}>
+        <p>{hit_to_string(h)}</p>
+    </div>
+    )
+    }
+</div>
