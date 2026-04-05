@@ -2,7 +2,7 @@ export const API_URL = "https://staging-api.modrinth.com"
 
 export async function search_projects(
     query: String, facets: ModrinthFacets | null = null,
-    index = "relevance", limit = 10, 
+    index = "relevance", limit = 15, 
 ): Promise<ModrinthMod[]> {
     let facet: String = "" // TODO: Add facet support
 
@@ -15,6 +15,13 @@ export async function search_projects(
     )
 
     console.assert(request.status == 200)
+
+	let max_requests = request.headers.get("X-Ratelimit-Limit")
+	let remaining_requests = request.headers.get("X-Ratelimit-Remaining")
+	let time_until_reset = request.headers.get("X-Ratelimit-Reset")
+	console.log(`Max Requests per minute: ${max_requests}`)
+	console.log(`Requests remaining: ${remaining_requests}`)
+	console.log(`Time until reset: ${time_until_reset}`)
 
     let json = await request.json()
 
@@ -40,17 +47,12 @@ function to_facets(facets: ModrinthFacets): String {
     }
 
     if (facets.categories != null) {
-        for (let c of facets.categories) {
-            facet = `${facet}["categories=${facets.categories}"],`
-        }
-    }
+		facet = `${facet}["categories=${facets.categories}"],` // FIX:
+	}
 
     let pos = facet.lastIndexOf(',')
     facet = facet.substring(0, pos) + facet.substring(pos+1)
     facet += "]"
-
-    console.log(facet)
-
 
     return facet
 }

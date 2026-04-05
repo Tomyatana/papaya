@@ -2,7 +2,7 @@
 import type { ModrinthMod } from './modrinth-api.ts'
 import '../styles/ModEntry.css'
 
-const { mod } = Astro.props
+const { mod } = Astro.props as { mod: ModrinthMod }
 
 export function mod_to_string(hit: ModrinthMod) {
     let string = `${hit.title} (${hit.author})`
@@ -15,7 +15,6 @@ export function mod_to_string(hit: ModrinthMod) {
 
 export function mod_image(hit: ModrinthMod): string {
     let string = (hit.icon) ? hit.icon.toString() : "/favicon.ico"
-    console.log(string)
     return string
 }
 
@@ -30,14 +29,16 @@ export function mod_image(hit: ModrinthMod): string {
 .container {
 	display: inline-flex;
 	align-items: center;
-	gap: 0px;
+	gap: 1rem;
 
-    border: 3px solid darkgreen;
+    border: 1px solid #bcbcbca0;
 	border-radius: 10px;
 	padding: 3px;
+	padding-right: 1rem;
+
 	background-color: black;
 
-	margin-bottom: 3px;
+	margin-bottom: 5px;
 	margin-right: 10px;
 	margin-left: 5px;
 	position: relative;
@@ -50,7 +51,6 @@ p {
 img {
     display: inline-block;
     float: left;
-    margin-right: 10px;
     width: 50px;
     height: 50px;
     object-fit: cover;
