@@ -6,14 +6,16 @@ const { mods } = Astro.props as { mods: ModrinthMod[] }
 
 ---
 
-<div id="modlist">
+<div class="modlist">
     { mods.map((m: any)=> <ModEntry mod={m} class="entry"/> ) }
 </div>
 
 <style>
 
-.entry {
-	padding-right: 16px;
+.modlist {
+	min-width: 100%;
+	overflow-x: scroll;
+	overflow-y: hidden;
 }
 
 </style>

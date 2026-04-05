@@ -28,18 +28,19 @@ export function mod_image(hit: ModrinthMod): string {
 
 <style>
 .container {
-	display: inline-grid;
-	grid-template-columns: auto 1fr;
+	display: inline-flex;
 	align-items: center;
-	gap: 10px;
+	gap: 0px;
 
-    border: 5px solid black;
-	border-radius: 15px;
+    border: 3px solid darkgreen;
+	border-radius: 10px;
 	padding: 3px;
 	background-color: black;
 
+	margin-bottom: 3px;
 	margin-right: 10px;
 	margin-left: 5px;
+	position: relative;
 }
 
 p {
@@ -49,9 +50,11 @@ p {
 img {
     display: inline-block;
     float: left;
-    padding-right: 10px;
+    margin-right: 10px;
     width: 50px;
     height: 50px;
     object-fit: cover;
+	border: 1px solid #bcbcbc40;
+	border-radius: 10px;
 }
 </style>
