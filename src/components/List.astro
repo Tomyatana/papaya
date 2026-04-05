@@ -1,0 +1,22 @@
+---
+import ModEntry from './ModEntry.astro'
+import type { ModrinthMod } from './modrinth-api.ts'
+
+const { mods, title } = Astro.props as { mods: ModrinthMod[], title: String }
+
+---
+<div>
+	<h2> {title} </h2>
+
+	<div class="modlist">
+		{ mods.map((m)=> <ModEntry mod={m} /> ) }
+	</div>
+</div>
+
+<style>
+.modlist {
+	overflow-x: scroll;
+	white-space: nowrap;
+	margin-left: -10px;
+}
+</style>

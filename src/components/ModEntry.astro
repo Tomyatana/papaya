@@ -13,20 +13,15 @@ function mod_to_string(hit: ModrinthMod) {
     return string
 }
 
-function mod_image(hit: ModrinthMod): string {
-    let string = (hit.icon) ? hit.icon.toString() : "/favicon.ico"
-    return string
-}
+let mod_image = (mod.icon) ? mod.icon.toString() : "/favicon.ico"
 
-function mod_link(hit: ModrinthMod): string {
-	return `https://modrinth.com/${hit.type}/${hit.slug}`
-}
+let mod_link = `https://modrinth.com/${mod.type}/${mod.slug}`
 
 ---
 
 <div class="container">
-    <img src={mod_image(mod)}>
-	<a href={mod_link(mod)} target="_blank"> {mod_to_string(mod)} </a>
+	<a href={mod_link}> <img src={mod_image}> </a>
+	<a href={mod_link} target="_blank"> {mod_to_string(mod)} </a>
 </div>
 
 <style>

@@ -1,6 +1,6 @@
 ---
-import ModList from "../components/ModList.astro"
 import Header from "../components/Header.astro";
+import List from "../components/List.astro"
 
 import Layout from '../layouts/Layout.astro';
 
@@ -34,7 +34,7 @@ let shaders = await search_projects("", shader_facet)
 
 <Layout>
 	<Header />
-	<ModList mods={mods}/>
-	<ModList mods={resource_packs}/>
-    <ModList mods={shaders}/>
+	<List mods={mods} title="Mods" />
+	<List mods={resource_packs} title="Resource Packs" />
+    <List mods={shaders} title="Shaders" />
 </Layout>

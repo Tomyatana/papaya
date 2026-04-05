@@ -1,5 +1,11 @@
 export const API_URL = "https://staging-api.modrinth.com"
 
+// Valid indices:
+// 		relevance
+// 		downloads
+// 		follows
+// 		newest
+// 		updated
 export async function search_projects(
     query: String, facets: ModrinthFacets | null = null,
     index = "relevance", limit = 15, 
