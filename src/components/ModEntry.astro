@@ -21,24 +21,37 @@ export function mod_image(hit: ModrinthMod): string {
 
 ---
 
-<div id="container">
+<div class="container">
     <img src={mod_image(mod)}>
-    <p>
-        {mod_to_string(mod)}
-    </p>
+    <p> {mod_to_string(mod)} </p>
 </div>
 
 <style>
-p {
-    color: green;
+.container {
+	display: inline-grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 10px;
+
     border: 5px solid black;
+	border-radius: 15px;
+	padding: 3px;
+	background-color: black;
+
+	margin-right: 10px;
+	margin-left: 5px;
 }
+
+p {
+	color: green;
+}
+
 img {
     display: inline-block;
     float: left;
     padding-right: 10px;
-    width: 75px;
-    height: px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
 }
 </style>

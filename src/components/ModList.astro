@@ -2,28 +2,18 @@
 import ModEntry from './ModEntry.astro'
 import type { ModrinthMod } from './modrinth-api.ts'
 
-const { mods } = Astro.props
-
-export function mod_to_string(hit: ModrinthMod) {
-    let string = `${hit.title} (${hit.author})`
-    if (hit.desc != null) {
-        string + `: ${hit.desc}`
-    }
-
-    return string
-}
-
-export function mod_image(hit: ModrinthMod): string | null | undefined {
-    let string = (hit.icon != null) ? hit.icon : ""
-    return string.toString()
-}
+const { mods } = Astro.props as { mods: ModrinthMod[] }
 
 ---
 
-<div id="container">
-    {
-    mods.map((m: any)=>
-    <ModEntry mod={m}/>
-    )
-    }
+<div id="modlist">
+    { mods.map((m: any)=> <ModEntry mod={m} class="entry"/> ) }
 </div>
+
+<style>
+
+.entry {
+	padding-right: 16px;
+}
+
+</style>
