@@ -2,10 +2,16 @@
 import ModList from "../components/ModList.astro"
 import Layout from '../layouts/Layout.astro';
 
-
 import { search_projects } from '../components/modrinth-api.ts'
+import type { ModrinthFacets } from '../components/modrinth-api.ts'
 
-let hits = await search_projects("")
+let facets: ModrinthFacets = {
+    project_type: "mod",
+    version: null,
+    categories: null
+}
+
+let hits = await search_projects("", facets)
 ---
 
 <Layout>

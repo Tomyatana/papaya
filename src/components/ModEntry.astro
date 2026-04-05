@@ -13,16 +13,17 @@ export function mod_to_string(hit: ModrinthMod) {
     return string
 }
 
-export function mod_image(hit: ModrinthMod): string | null | undefined {
-    let string = (hit.icon != null) ? hit.icon : ""
-    return string.toString()
+export function mod_image(hit: ModrinthMod): string {
+    let string = (hit.icon) ? hit.icon.toString() : "/favicon.ico"
+    console.log(string)
+    return string
 }
 
 ---
 
 <div id="container">
+    <img src={mod_image(mod)}>
     <p>
-        <img src={mod_image(mod)}>
         {mod_to_string(mod)}
     </p>
 </div>
@@ -35,9 +36,9 @@ p {
 img {
     display: inline-block;
     float: left;
-    padding: 10px;
-    width: 100px;
-    height: 100px;
+    padding-right: 10px;
+    width: 75px;
+    height: px;
     object-fit: cover;
 }
 </style>
