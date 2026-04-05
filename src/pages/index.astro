@@ -30,6 +30,14 @@ let shader_facet: ModrinthFacets = {
 }
 
 let shaders = await search_projects("", shader_facet)
+
+let pack_facet: ModrinthFacets = {
+    project_type: "modpack",
+    version: null,
+    categories: null
+}
+
+let packs = await search_projects("", pack_facet)
 ---
 
 <Layout>
@@ -37,4 +45,5 @@ let shaders = await search_projects("", shader_facet)
 	<List mods={mods} title="Mods" />
 	<List mods={resource_packs} title="Resource Packs" />
     <List mods={shaders} title="Shaders" />
+    <List mods={packs} title="Mod Packs" />
 </Layout>

@@ -7,7 +7,11 @@ const { mods, title } = Astro.props as { mods: ModrinthMod[], title: String }
 ---
 <div>
 	<h2> {title} </h2>
-
+	<label for="index"> Sorting: </label>
+	<select name="index" id="sorting">
+		<option value="HOLA">HOLA</option>
+		<option value="CHAU">CHAU</option>
+	</select>
 	<div class="modlist">
 		{ mods.map((m)=> <ModEntry mod={m} /> ) }
 	</div>
@@ -19,4 +23,13 @@ const { mods, title } = Astro.props as { mods: ModrinthMod[], title: String }
 	white-space: nowrap;
 	margin-left: -10px;
 }
+
+h2 {
+	margin-bottom: 0px;
+}
+
+select {
+	margin-bottom: 5px;
+}
+
 </style>
