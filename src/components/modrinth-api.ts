@@ -28,6 +28,8 @@ export async function search_projects(
     let mods: ModrinthMod[] = json.hits.map((h: any) => {
         let mod: ModrinthMod = {
             title: h.title,
+			slug: h.slug,
+			type: h.project_type,
             downloads: h.downloads,
             author: h.author,
             desc: h.description,
@@ -77,6 +79,8 @@ function to_facets(facets: ModrinthFacets): String {
 
 export interface ModrinthMod { // TODO: Add more fields
     title: String,
+	slug: String,
+	type: String,
     desc: String | null,
     author: String,
     downloads: number,

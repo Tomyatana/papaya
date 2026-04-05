@@ -7,7 +7,7 @@ const { mods } = Astro.props as { mods: ModrinthMod[] }
 ---
 
 <div class="modlist">
-    { mods.map((m: any)=> <ModEntry mod={m} class="entry"/> ) }
+    { mods.map((m: any)=> <ModEntry mod={m} /> ) }
 </div>
 
 <style>
