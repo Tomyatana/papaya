@@ -5,6 +5,7 @@ import List from "../components/List.astro"
 import Layout from '../layouts/Layout.astro';
 
 import type { ModrinthFacets } from '../components/modrinth-api.ts'
+import Footer from "../components/Footer.astro";
 
 let mod_facet: ModrinthFacets = {
     project_type: null,
@@ -37,4 +38,5 @@ let pack_facet: ModrinthFacets = {
 	<List facet={resource_pack_facet} title="Resource Packs" />
     <List facet={shader_facet} title="Shaders" />
     <List facet={pack_facet} title="Mod Packs" />
+    <Footer />
 </Layout>
