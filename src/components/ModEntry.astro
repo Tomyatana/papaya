@@ -17,14 +17,17 @@ let mod_image = (mod.icon) ? mod.icon.toString() : "/favicon.ico"
 
 let mod_link = `https://modrinth.com/${mod.type}/${mod.slug}`
 
+let bg = `#${mod.icon_color}`;
+
 ---
 
 <div class="container">
-	<a href={mod_link}> <img src={mod_image}> </a>
-	<a href={mod_link} target="_blank"> {mod_to_string(mod)} </a>
+	<img src={mod_image}>
+	<p> {mod_to_string(mod)} </p>
+    <a href={mod_link} target="_blank"> <span></span> </p>
 </div>
 
-<style>
+<style define:vars={{bg}}>
 .container {
 	display: inline-flex;
 	align-items: center;
@@ -35,7 +38,10 @@ let mod_link = `https://modrinth.com/${mod.type}/${mod.slug}`
 	padding: 3px;
 	padding-right: 1rem;
 
-	background-color: black;
+    background: linear-gradient(145deg, var(--bg) 0%,
+        #0c3f16 100%
+        );
+    background-color: #000000;
 
 	margin-bottom: 5px;
 	margin-right: 10px;
@@ -44,10 +50,23 @@ let mod_link = `https://modrinth.com/${mod.type}/${mod.slug}`
 
     min-width: 20rem;
     max-width: 20rem;
+    overflow: visible;
+
+    position: relative;
 }
 
-a {
-	color: green;
+span { 
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+p {
+	color: white;
+    text-shadow: 2px 2px 4px black;
     overflow: hidden;
     text-overflow: ellipsis;
 }

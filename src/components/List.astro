@@ -7,8 +7,8 @@ const { facet, title } = Astro.props as { facet: ModrinthFacets, title: String }
 let mods = await search_projects("", facet);
 
 ---
-<div>
-	<h2> {title} </h2>
+<h2> {title} </h2>
+<div class="wrapper">
 	<div class="modlist">
 		{ mods.map((m)=> <ModEntry mod={m} /> ) }
 		{ mods.map((m)=> <ModEntry mod={m} /> ) }
@@ -16,11 +16,21 @@ let mods = await search_projects("", facet);
 </div>
 
 <style>
+
+.wrapper {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    margin-left: -6px;
+}
+
 .modlist {
 	white-space: nowrap;
 	margin-left: -10px;
     position: relative;
-    animation: scrolling 25s infinite linear;
+    animation: scrolling 45s infinite linear;
+    width: max-content;
 }
 
 .modlist:hover {
@@ -33,7 +43,7 @@ from {
 }
 
 to {
-    transform: translateX(-578%);
+    transform: translateX(-50%);
 }
 }
 

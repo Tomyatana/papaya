@@ -1,4 +1,4 @@
-export const API_URL = "https://staging-api.modrinth.com"
+export const API_URL = "https://api.modrinth.com"
 
 // Valid indices:
 // 		relevance
@@ -31,7 +31,9 @@ export async function search_projects(
 
     let json = await request.json()
 
+
     let mods: ModrinthMod[] = json.hits.map((h: any) => {
+        let color = (h.color) ? h.color - 0x111111: 0x6df287;
         let mod: ModrinthMod = {
             title: h.title,
 			slug: h.slug,
@@ -40,6 +42,7 @@ export async function search_projects(
             author: h.author,
             desc: h.description,
             icon: h.icon_url,
+            icon_color: color.toString(16)
         }
         return mod
     })
@@ -91,7 +94,8 @@ export interface ModrinthMod { // TODO: Add more fields
     author: String,
     downloads: number,
 
-    icon: String | null
+    icon: String | null,
+    icon_color: String | null,
 }
 
 export interface ModrinthFacets {
