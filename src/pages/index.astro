@@ -4,16 +4,13 @@ import List from "../components/List.astro"
 
 import Layout from '../layouts/Layout.astro';
 
-import { search_projects } from '../components/modrinth-api.ts'
 import type { ModrinthFacets } from '../components/modrinth-api.ts'
 
 let mod_facet: ModrinthFacets = {
-    project_type: "mod",
+    project_type: null,
     version: null,
     categories: null
 }
-
-let mods = await search_projects("", mod_facet)
 
 let resource_pack_facet: ModrinthFacets = {
     project_type: "resourcepack",
@@ -21,29 +18,23 @@ let resource_pack_facet: ModrinthFacets = {
     categories: null
 }
 
-let resource_packs = await search_projects("", resource_pack_facet)
-
 let shader_facet: ModrinthFacets = {
     project_type: "shader",
     version: null,
     categories: null
 }
 
-let shaders = await search_projects("", shader_facet)
-
 let pack_facet: ModrinthFacets = {
     project_type: "modpack",
     version: null,
     categories: null
 }
-
-let packs = await search_projects("", pack_facet)
 ---
 
 <Layout>
 	<Header />
-	<List mods={mods} title="Mods" />
-	<List mods={resource_packs} title="Resource Packs" />
-    <List mods={shaders} title="Shaders" />
-    <List mods={packs} title="Mod Packs" />
+	<List facet={mod_facet} title="Mods" />
+	<List facet={resource_pack_facet} title="Resource Packs" />
+    <List facet={shader_facet} title="Shaders" />
+    <List facet={pack_facet} title="Mod Packs" />
 </Layout>

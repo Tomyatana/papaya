@@ -41,10 +41,15 @@ let mod_link = `https://modrinth.com/${mod.type}/${mod.slug}`
 	margin-right: 10px;
 	margin-left: 5px;
 	position: relative;
+
+    min-width: 20rem;
+    max-width: 20rem;
 }
 
 a {
 	color: green;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 img {
