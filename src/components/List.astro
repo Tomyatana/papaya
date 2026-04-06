@@ -9,11 +9,6 @@ let mods = await search_projects("", facet);
 ---
 <div>
 	<h2> {title} </h2>
-	<label for="index"> Sorting: </label>
-	<select name="index" id="sorting">
-		<option value="HOLA">HOLA</option>
-		<option value="CHAU">CHAU</option>
-	</select>
 	<div class="modlist">
 		{ mods.map((m)=> <ModEntry mod={m} /> ) }
 		{ mods.map((m)=> <ModEntry mod={m} /> ) }
@@ -25,7 +20,11 @@ let mods = await search_projects("", facet);
 	white-space: nowrap;
 	margin-left: -10px;
     position: relative;
-    animation: scrolling 20s infinite linear;
+    animation: scrolling 25s infinite linear;
+}
+
+.modlist:hover {
+    animation-play-state: paused;
 }
 
 @keyframes scrolling {
