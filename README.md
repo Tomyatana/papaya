@@ -9,3 +9,8 @@ Podés ver mods, resource packs, shaders y modpacks según la relevancia.
 **Instrucciones**: Correr `npm run dev` en el root del proyecto y conectarse a `localhost:4321`. [También está hosteado en vercel.](https://papaya-eight.vercel.app/)
 
 **Notas**: Hubiera estado bueno haber metido para poder filtrar mods, pero me colgué y me quedé sin tiempo.
+
+**Items**:
++ Animacion
++ Componentes Reutilizables?
++ Deploy
