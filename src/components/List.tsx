@@ -7,15 +7,16 @@ import '../styles/List.css'
 type Props = { facet: ModrinthFacets, title: String };
 
 export function List({facet, title}: Props) {
-	let [mods, setData] = useState<ModrinthMod[]>()
+	let [mods, setMods] = useState<ModrinthMod[]>()
+	let [index, setIndex] = useState("relevance")
 
 	useEffect(() => {
 		async function fetch_projects() {
-			let mods = await search_projects("", facet);
-			setData(mods)
+			let mods = await search_projects("", facet, index);
+			setMods(mods)
 		}
 		fetch_projects()
-	})
+	}, [facet, index])
 
 
 	if (!mods) return <p> Loading... </p>
@@ -23,6 +24,13 @@ export function List({facet, title}: Props) {
 	return (
 		<div>
 			<p> {title} </p>
+			<select value={index} onChange={(ev) => setIndex((ev.target as HTMLSelectElement).value)}>
+				<option value="relevance">Relevance</option>
+				<option value="downloads">Downloads</option>
+				<option value="follows">Follows</option>
+				<option value="updated">Updated</option>
+				<option value="newest">Newest</option>
+			</select>
 			<div class="wrapper">
 				<div class="modlist">
 					{ mods.map((m)=> ModEntry(m) ) }
@@ -32,3 +40,10 @@ export function List({facet, title}: Props) {
 		</div>
 	)
 }
+
+// Valid indices:
+// 		relevance
+// 		downloads
+// 		follows
+// 		newest
+// 		updated
