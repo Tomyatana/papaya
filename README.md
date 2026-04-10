@@ -12,5 +12,7 @@ Podés ver mods, resource packs, shaders y modpacks según la relevancia.
 
 **Items**:
 + Animacion
-+ Componentes Reutilizables?
-+ Deploy
++ Componentes Reutilizables? (Cuentan los de Preact?)
++ Deploy (Vercel)
++ Fetch de Api (Modrinth)
++ Integración con librería (Preact)
