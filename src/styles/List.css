@@ -1,0 +1,39 @@
+.wrapper {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    margin-left: -6px;
+}
+
+.modlist {
+	white-space: nowrap;
+	margin-left: -10px;
+    position: relative;
+    animation: scrolling 45s infinite linear;
+    width: max-content;
+}
+
+.modlist:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrolling {
+from {
+    transfrom: translateX(0);
+}
+
+to {
+    transform: translateX(-50%);
+}
+}
+
+h2 {
+	margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+select {
+	margin-bottom: 5px;
+}
+

@@ -42,7 +42,7 @@ export async function search_projects(
             author: h.author,
             desc: h.description,
             icon: h.icon_url,
-            icon_color: color.toString(16)
+            icon_color: `#${color.toString(16)}`
         }
         return mod
     })
