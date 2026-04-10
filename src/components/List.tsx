@@ -19,12 +19,14 @@ export function List({facet, title}: Props) {
 	}, [facet, index])
 
 
-	if (!mods) return <p> Loading... </p>
-
 	return (
 		<div>
-			<p> {title} </p>
-			<select value={index} onChange={(ev) => setIndex((ev.target as HTMLSelectElement).value)}>
+			<h2> {title} </h2>
+			<label for="index"> Sort by: </label>
+			<select name="index" value={index} onChange={(ev) => { 
+				setIndex((ev.target as HTMLSelectElement).value)
+				setMods(undefined)
+			}}>
 				<option value="relevance">Relevance</option>
 				<option value="downloads">Downloads</option>
 				<option value="follows">Follows</option>
@@ -32,18 +34,21 @@ export function List({facet, title}: Props) {
 				<option value="newest">Newest</option>
 			</select>
 			<div class="wrapper">
-				<div class="modlist">
-					{ mods.map((m)=> ModEntry(m) ) }
-					{ mods.map((m)=> ModEntry(m) ) }
-				</div>
+				{ListHelper(mods)}
 			</div>
 		</div>
 	)
 }
 
-// Valid indices:
-// 		relevance
-// 		downloads
-// 		follows
-// 		newest
-// 		updated
+function ListHelper(mods: ModrinthMod[] | undefined) {
+	if (mods) {
+		return (
+			<div class="modlist">
+				{ mods.map((m)=> ModEntry(m) ) }
+				{ mods.map((m)=> ModEntry(m) ) }
+			</div>
+		)
+	} else {
+		return (<div><p>Loading...</p></div>)
+	}
+}

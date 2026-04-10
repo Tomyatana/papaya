@@ -29,11 +29,17 @@ to {
 }
 
 h2 {
-	margin-bottom: 5px;
+	margin-bottom: 3px;
     padding-left: 10px;
 }
 
 select {
-	margin-bottom: 5px;
+	width: 6rem;
+	height: 1.5rem;
+	margin-bottom: 8px;
+	background-color: #d93440;
+	font-weight: 500;
+	color: whitesmoke;
+	border-radius: 8px;
+	border: 2px solid whitesmoke;
 }
-
