@@ -1,6 +1,6 @@
 ---
 import Header from "../components/Header.astro";
-import List from "../components/List.astro"
+import { List, Test } from "../components/List.tsx"
 
 import Layout from '../layouts/Layout.astro';
 
@@ -34,9 +34,9 @@ let pack_facet: ModrinthFacets = {
 
 <Layout>
 	<Header />
-	<List facet={mod_facet} title="Mods" />
-	<List facet={resource_pack_facet} title="Resource Packs" />
-    <List facet={shader_facet} title="Shaders" />
-    <List facet={pack_facet} title="Mod Packs" />
+	<List facet={mod_facet} title="Mods" client:load />
+	<List facet={resource_pack_facet} title="Resource Packs" client:load />
+    <List facet={shader_facet} title="Shaders" client:load />
+    <List facet={pack_facet} title="Mod Packs" client:load />
     <Footer />
 </Layout>
